@@ -55,11 +55,47 @@ import org.springframework.stereotype.Component;
 			//
 			//here in child class we define @component then we no need to define beans in xml file
 			//we use @Component instead of <bean id="vehicle" class="com.pearl.SpringCore.Bike"></bean> this
+			//change child class
+				//package com.pearl.SpringCore;
+				//
+				//import org.springframework.stereotype.Component;
+				//
+				//@Component
+				//public class Car implements Vehicle{
+				//	
+				//	public void drive() {
+				//		System.out.println("Honda Civic");
+				//	}
+				//}
+			//change in xml
+				//<context:component-scan base-package="com.pearl.SpringCore"></context:component-scan>
+			//in main class
+				//ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+				//
+				//Vehicle obj = (Vehicle)context.getBean("car");
+				//obj.drive();
 		//3.java configuration
 			//
 
 
-//
+	//step 5 - insert property tag inside bean
+		//create Tyre class and create object in main class
+
+		//Two ways to set propery 
+		//1.setter injection
+			//create getters and setters in tyre class
+			//change xml file
+				//<bean id="tyre" class="com.pearl.SpringCore.Tyre">
+				//<property name="brand" value="MRF"></property>
+				//</bean>
+			//call the object
+
+		//2.constructor injection
+			//create constructor in tyre class
+			//change xml file
+			//<constructor-arg value="MRF"></constructor-arg>
+
+	//step 6 - Autowired Annotation
 
 public class App 
 {
@@ -68,7 +104,13 @@ public class App
 
     	ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
     	
-    	Vehicle obj = (Vehicle)context.getBean("car");
+//    	Vehicle obj = (Vehicle)context.getBean("car");
+//    	obj.drive();
+    	
+    	Car obj = (Car)context.getBean("car");
     	obj.drive();
+    	
+//    	Tyre t = (Tyre)context.getBean("tyre");
+//    	System.out.println(t);
     }
 }
